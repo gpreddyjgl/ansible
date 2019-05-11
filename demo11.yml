@@ -1,0 +1,13 @@
+--- 
+- 
+  become: true
+  hosts: demo
+  tasks: 
+    - name: "Install httpd package"
+      yum: "pkg='{{ pkgname }}' state=present"
+    - name: "Start service"
+      service:
+       name: '{{ pkgname }}'
+       state: started
+  vars: 
+    pkgname: httpd

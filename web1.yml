@@ -1,0 +1,13 @@
+---
+- hosts: web
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: install apache
+    apt: name=apache2 state=present
+    notify:
+     - restart apache2
+  handlers:
+     - name: restart apache2
+       service: name=apache2 state=running
+ 

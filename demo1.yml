@@ -1,0 +1,10 @@
+---
+- hosts: demo
+  become: yes
+  vars:
+   pkgname: httpd
+  tasks:
+   - name: Install apache
+     yum: pkg='{{ pkgname }}' state=installed
+   
+

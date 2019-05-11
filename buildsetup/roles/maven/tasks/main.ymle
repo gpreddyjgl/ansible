@@ -22,12 +22,12 @@
     src: '{{ maven_home_parent_directory }}/{{ maven_file_name }}'
     dest: '{{ maven_home_parent_directory }}'
     copy: no
-  when: maven_installed.stat.exists!= True
+  when: maven_installed.stat.exits != True
 - name: Remove old Path configuration
   file: 
     path: /etc/profile.d/maven.sh
     state: absent
-  when: maven_installed.stat.exists!= True
+  when: maven_installed.stat.exits != True
 - name: Maven Path configuration
   lineinfile:
    dest: /etc/profile.d/maven.sh

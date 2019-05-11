@@ -1,0 +1,13 @@
+---
+- hosts: demo
+  become: yes
+  connection: ssh
+  vars:
+     pkgname: httpd
+  tasks:
+     - name: Install http package
+       yum: pkg='{{ pkgname}}'  state=installed
+
+     - name: start service
+       service: name='{{ pkgname}}' state=started
+         

@@ -1,0 +1,20 @@
+---
+- hosts: local
+  become: yes
+  connection: local
+  tasks:
+  - name: Install python moudles
+    yum: name='{{item}}'
+    with_items:
+    - python-pip
+    - python-devel
+  - name: Install boto
+    pip: name=boto
+
+  - name: create AWS instances
+    ec2:
+     key_name: "win10"
+     instance_type:  t2.micro
+     image: "ami-c58c1dd3"
+     wait: yes
+     region: us-east-1

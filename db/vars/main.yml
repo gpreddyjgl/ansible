@@ -1,0 +1,4 @@
+---
+# vars file for db
+   dbuser: ansible
+   dbpassword: 12345

@@ -1,0 +1,12 @@
+---
+- hosts: local
+  become: yes
+  connection: local
+  tasks:
+  - name: create AWS instances
+    ec2:
+     instance_ids: i-01e8da2a879494c3b
+     aws_access_key: AKIAI3FS5GFIMFJC7DOQ
+     aws_secret_key: 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
+     state: absent
+     region: us-east-1

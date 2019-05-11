@@ -1,0 +1,8 @@
+---
+# tasks file for web
+  - name: Install apache2 package
+    apt: name='{{ pkgname }}' state=present
+    notify: 
+     - start apache2
+    tags:
+     - web

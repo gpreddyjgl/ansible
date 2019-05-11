@@ -1,0 +1,16 @@
+---
+- hosts: db
+  become: yes
+  connection: ssh
+  tasks:
+  - name: Install mysql
+    apt: name={{ item }} state=present
+    with_items:
+     - mysql-server
+  # tasks file for mysql
+  - name: Install the Python MySQLB module
+    pip: name=MySQL-python
+  - name: Create a database
+    mysql_db: 
+     name: babudb
+     state: present

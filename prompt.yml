@@ -1,0 +1,17 @@
+---
+- hosts: demo
+  become: yes
+  connection: ssh
+  vars_prompt: 
+   - name:  mypkgname
+     prompt: "enter Package Name"
+  tasks:
+   - name: Install httpd package
+     yum: 
+      pkg: '{{ mypkgname }}' 
+      state: present
+   - name: Start service
+     service:
+      name: '{{ mypkgname }}'
+      state: started
+

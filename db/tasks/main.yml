@@ -1,0 +1,18 @@
+---
+# tasks file for db
+  - name: ensure mysql is installed
+    apt: name={{ item }} state=present
+    with_items:
+      - mysql-server
+      - libmysqlclient-dev
+    notify:
+     - start mysql
+  - name: Install the Python MySQLB module
+    pip: name=MySQL-python
+  - name: create application database
+    mysql_db: name={{ item }} state=present
+    with_items:
+      - db01 
+      - db02
+  - name: create application user
+    mysql_user: name={{ dbuser }} password={{ dbpassword }} priv=*.*:ALL state=present

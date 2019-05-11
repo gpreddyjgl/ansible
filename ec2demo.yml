@@ -1,0 +1,16 @@
+---
+- hosts: local
+  connection: local
+  gather_facts: false
+  tasks: 
+    - name: Crate EC2 
+      ec2: 
+       name: prav
+       description: tst server 
+       region: us-east-1
+       aws_access_key: AKIAI3FS5GFIMFJC7DOQ
+       aws_secret_key: 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
+       image: ami-0de53d8956e8dcf80
+       wait: yes
+       instance_type: t2.micro
+       key_name: win10

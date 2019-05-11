@@ -1,0 +1,17 @@
+---
+- hosts: local
+  become: yes
+  connection: local
+  tasks:
+  - name: create AWS instances
+    ec2:
+     key_name: "win10"
+     instance_type:  t2.micro
+     image: "ami-c58c1dd3"
+     wait: yes
+     region: us-east-1
+     aws_access_key: AKIAI3FS5GFIMFJC7DOQ
+     aws_secret_key: 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
+     instance_tags: 
+       db: tsm
+     group: "default"
